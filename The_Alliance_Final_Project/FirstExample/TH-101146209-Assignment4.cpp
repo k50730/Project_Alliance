@@ -232,7 +232,7 @@ void display(void)
 	//glDrawElements(GL_TRIANGLES, cube->mNumOfIndex[Type::Cube], GL_UNSIGNED_SHORT, 0);
 
 	glBindVertexArray(*cube->VAO[Type::Bar]);
-	glBindTexture(GL_TEXTURE_2D, textureID);
+	//glBindTexture(GL_TEXTURE_2D, textureID);
 	transformObject(cube->transform);
 	glDrawElements(GL_TRIANGLES, cube->mNumOfIndex[Type::Bar], GL_UNSIGNED_SHORT, 0);
 	glutSwapBuffers();

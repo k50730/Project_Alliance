@@ -359,7 +359,7 @@ GLuint* Primitives::Cuboid()
 GLuint* Primitives::Bar()
 {
 	int numberOfVertices = 6;
-	GLfloat* vertices = new GLfloat[(numberOfVertices * 2 + 1) * 2 * 3];
+	GLfloat* vertices = new GLfloat[(numberOfVertices + 1) * 2 * 3];
 	int vertex_index = 0;
 	int index_index = 0;
 	int uv_index = 0;
@@ -396,7 +396,7 @@ GLuint* Primitives::Bar()
 	vertices[vertex_index + 5] = 0;
 #pragma endregion
 
-	GLushort* index = new GLushort[ numberOfVertices * 4 * 3];
+	GLushort* index = new GLushort[numberOfVertices * 4 * 3];
 
 
 // indices for top and bot
@@ -409,24 +409,10 @@ GLuint* Primitives::Bar()
 			index[index_index + 1] = 0;
 			index[index_index + 2] = numberOfVertices * 2;
 
-
-			// side
-			// first tri
-			index[index_index + numberOfVertices * 6] = i;
-			index[index_index + numberOfVertices * 6 + 1] = i + 2 * numberOfVertices + 1;
-			index[index_index + numberOfVertices * 6 + 2] = i + numberOfVertices;
-			// second tri
-			index[index_index + numberOfVertices * 6 + 3] = i;
-			index[index_index + numberOfVertices * 6 + 4] = i + numberOfVertices + 1;
-			index[index_index + numberOfVertices * 6 + 5] = i + 2 * numberOfVertices + 1;
-
 			std::cout << "Last bot: " << i << std::endl;
 			std::cout << "Last bot: 0" << std::endl;
-			std::cout << "Last bot: " << numberOfVertices * 4 << std::endl;
+			std::cout << "Last bot: " << numberOfVertices * 2 << std::endl;
 
-			std::cout << "Last top: " << i + numberOfVertices << std::endl;
-			std::cout << "Last top: " << numberOfVertices << std::endl;
-			std::cout << "Last top: " << 1 + numberOfVertices * 4 << std::endl;
 		}
 		else {
 			// bot
@@ -435,29 +421,6 @@ GLuint* Primitives::Bar()
 			index[index_index + 2] = numberOfVertices * 2;
 			//std::cout << i + 1 << " bot: " << i << std::endl;
 			//std::cout << i + 1 << " bot: " << i + 1 << std::endl;
-
-
-			// side
-			// first tri
-			index[index_index + numberOfVertices * 6] = i;
-			index[index_index + numberOfVertices * 6 + 1] = i + 2 * numberOfVertices + 1;
-			index[index_index + numberOfVertices * 6 + 2] = i + numberOfVertices;
-
-			index[index_index + numberOfVertices * 6 + 3] = i;
-			index[index_index + numberOfVertices * 6 + 4] = i + 2 * numberOfVertices + 1;
-			index[index_index + numberOfVertices * 6 + 5] = i + 3 * numberOfVertices + 1;
-
-
-
-			std::cout << i + 1 << " triangle side: " << i << std::endl;
-			std::cout << i + 1 << " triangle side: " << i + 3 * numberOfVertices + 1 << std::endl;
-			std::cout << i + 1 << " triangle side: " << i + numberOfVertices << std::endl;
-			std::cout << i + 1 << " triangle side: " << i << std::endl;
-			std::cout << i + 1 << " triangle side: " << i + 2 * numberOfVertices + 1 << std::endl;
-			std::cout << i + 1 << " triangle side: " << i + 3 * numberOfVertices + 1 << std::endl;
-			std::cout << "//////////////////////////////////////////" << std::endl;
-
-
 		}
 		index_index += 3;
 	}
@@ -465,16 +428,16 @@ GLuint* Primitives::Bar()
 	// bot index
 	for (int i = 0; i < numberOfVertices; i++) {
 		if (i == numberOfVertices - 1) {
-			// bot
+			// top
 			index[index_index] = i + numberOfVertices;
 			index[index_index + 1] = numberOfVertices;
 			index[index_index + 2] = 1 + numberOfVertices * 2;
 		}
 		else {
-			// bot
+			// top
 			index[index_index] = i + numberOfVertices;
 			index[index_index + 1] = i + numberOfVertices + 1;
-			index[index_index + 2] = 1 + numberOfVertices * 4;
+			index[index_index + 2] = 1 + numberOfVertices * 2;
 			std::cout << i + 1 << " top: " << i + numberOfVertices << std::endl;
 			std::cout << i + 1 << " top: " << i + numberOfVertices + 1 << std::endl;
 			std::cout << "//////////////////////////////////////////" << std::endl;
@@ -483,7 +446,29 @@ GLuint* Primitives::Bar()
 	}
 
 	for (int i = 0; i < numberOfVertices; i++) {
-
+		if (i == numberOfVertices - 1) {
+			// side
+			// first tri
+			index[index_index] = i;
+			index[index_index + 1] = 0;
+			index[index_index + 2] = i + numberOfVertices;
+			// second tri
+			index[index_index + 3] = 0;
+			index[index_index + 4] = i + numberOfVertices;
+			index[index_index + 5] = numberOfVertices;
+		}
+		else {
+			// side
+			// first tri
+			index[index_index] = i;
+			index[index_index + 1] = i + 1;
+			index[index_index + 2] = i + numberOfVertices;
+			// second tri
+			index[index_index + 3] = i + 1;
+			index[index_index + 4] = i + numberOfVertices;
+			index[index_index + 5] = i + numberOfVertices + 1;
+		}
+		index_index += 6;
 	}
 
 
@@ -566,7 +551,7 @@ GLuint* Primitives::Bar()
 	GLuint VBO;
 	glGenBuffers(1, &VBO);
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, (numberOfVertices * 2 + 1) * 2 * 3 * sizeof(GLfloat), vertices, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, (numberOfVertices + 1) * 2 * 3 * sizeof(GLfloat), vertices, GL_STATIC_DRAW);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
 	glEnableVertexAttribArray(0);
 
