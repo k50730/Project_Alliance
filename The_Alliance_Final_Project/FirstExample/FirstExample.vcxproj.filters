@@ -18,10 +18,10 @@
     <ClCompile Include="LoadShaders.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TH-101146209-Assignment4.cpp">
+    <ClCompile Include="GeometryGenerator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GeometryGenerator.cpp">
+    <ClCompile Include="Alliance_Final_Project.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

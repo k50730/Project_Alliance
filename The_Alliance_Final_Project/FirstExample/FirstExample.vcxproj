@@ -90,7 +90,7 @@
   <ItemGroup>
     <ClCompile Include="GeometryGenerator.cpp" />
     <ClCompile Include="LoadShaders.cpp" />
-    <ClCompile Include="TH-101146209-Assignment4.cpp" />
+    <ClCompile Include="Alliance_Final_Project.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="triangles.frag" />

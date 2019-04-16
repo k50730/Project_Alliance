@@ -23,14 +23,13 @@ enum Type
 	Cube,
 	Cuboid,
 	Pyramid,
-	ChopPyramid,
-	Cone,
-	ChopCone,
-	Cylinder,
-	Wedge,
 	Triangle,
-	Hexagon,
 	Bar,
+	HexagonCone,
+	Cone,
+	Cylinder,
+	Octagon,
+	OctagonCone
 };
 class Primitives
 {
@@ -43,16 +42,20 @@ public:
 	GLuint* Cube();
 	GLuint* Cuboid();
 	GLuint* Pyramid();
-	GLuint* ChopPyramid();
-	GLuint* Cone();
-	GLuint* ChopCone();
-	GLuint* Cylinder();
-	GLuint* Wedge();
 	GLuint* Triangle();
-	GLuint* Hexagon();
 	GLuint* Bar();
+	GLuint* HexagonCone();
+	GLuint* Cone();
+	GLuint* Cylinder();
+	GLuint* Octagon();
+	GLuint* OctagonCone();
 
-	int mNumOfIndex[8];
+
+	GLfloat* Shape(int numVert);
+	GLuint* Cone(int numVert);
+	GLuint* Cylinder(int numVert);
+
+	int mNumOfIndex[10];
 	Transform transform;
 	
 
