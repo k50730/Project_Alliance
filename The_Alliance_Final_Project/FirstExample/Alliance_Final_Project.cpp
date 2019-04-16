@@ -600,7 +600,7 @@ int main(int argc, char** argv)
 	glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH);
 
 	glutInitWindowSize(960, 720);
-	glutCreateWindow("HsiaoTe Tang, 101131908");
+	glutCreateWindow("Alliance Castle!");
 
 	glewInit();	//Initializes the glew and prepares the drawing pipeline.
 

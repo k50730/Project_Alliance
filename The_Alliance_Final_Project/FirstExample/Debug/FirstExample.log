@@ -3,4 +3,6 @@ d:\school\opengl\opengl_project\the_alliance_final_project\firstexample\alliance
 d:\school\opengl\opengl_project\the_alliance_final_project\firstexample\alliance_final_project.cpp(293): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 d:\school\opengl\opengl_project\the_alliance_final_project\firstexample\alliance_final_project.cpp(325): warning C4068: unknown pragma
 d:\school\opengl\opengl_project\the_alliance_final_project\firstexample\alliance_final_project.cpp(545): warning C4804: '<=': unsafe use of type 'bool' in operation
+  GeometryGenerator.cpp
+  Generating Code...
   FirstExample.vcxproj -> D:\School\OpenGL\OpenGL_Project\The_Alliance_Final_Project\Debug\FirstExample.exe
